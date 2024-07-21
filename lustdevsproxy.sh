@@ -29,4 +29,5 @@ echo 'cache deny all' | sudo tee -a /etc/squid/squid.conf > /dev/null
 echo 'access_log none' | sudo tee -a /etc/squid/squid.conf > /dev/null
 echo 'cache_store_log none' | sudo tee -a /etc/squid/squid.conf > /dev/null
 echo 'cache_log /dev/null' | sudo tee -a /etc/squid/squid.conf > /dev/null
+echo '* - nofile 4096' | sudo tee -a /etc/security/limits.conf
 systemctl start squid
