@@ -31,6 +31,7 @@ echo 'header_access X-FORWARDED-FOR deny all' | sudo tee -a /etc/squid/squid.con
 echo 'header_access HTTP_VIA deny all' | sudo tee -a /etc/squid/squid.conf > /dev/null
 echo 'header_access VIA deny all' | sudo tee -a /etc/squid/squid.conf > /dev/null
 echo 'header_access CACHE-CONTROL deny all' | sudo tee -a /etc/squid/squid.conf > /dev/null
+echo 'request_header_access Cache-Control deny all' | sudo tee -a /etc/squid/squid.conf > /dev/null
 echo 'acl NOCACHE src all' | sudo tee -a /etc/squid/squid.conf > /dev/null
 echo 'cache deny NOCACHE' | sudo tee -a /etc/squid/squid.conf > /dev/null
 echo 'access_log none' | sudo tee -a /etc/squid/squid.conf > /dev/null
