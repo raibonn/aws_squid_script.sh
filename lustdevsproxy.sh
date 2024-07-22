@@ -25,10 +25,13 @@ echo 'header_access X-FORWARDED-FOR deny all' | sudo tee -a /etc/squid/squid.con
 echo 'header_access HTTP_VIA deny all' | sudo tee -a /etc/squid/squid.conf > /dev/null
 echo 'header_access VIA deny all' | sudo tee -a /etc/squid/squid.conf > /dev/null
 echo 'header_access CACHE-CONTROL deny all' | sudo tee -a /etc/squid/squid.conf > /dev/null
-echo 'cache deny all' | sudo tee -a /etc/squid/squid.conf > /dev/null
+echo 'acl NOCACHE src all' | sudo tee -a /etc/squid/squid.conf > /dev/null
+echo 'cache deny NOCACHE' | sudo tee -a /etc/squid/squid.conf > /dev/null
 echo 'access_log none' | sudo tee -a /etc/squid/squid.conf > /dev/null
 echo 'cache_store_log none' | sudo tee -a /etc/squid/squid.conf > /dev/null
 echo 'cache_log /dev/null' | sudo tee -a /etc/squid/squid.conf > /dev/null
 echo 'cache_dir none /dev/null' | sudo tee -a /etc/squid/squid.conf > /dev/null
-echo '* - nofile 4096' | sudo tee -a /etc/security/limits.conf
+#echo '* - nofile 8196' | sudo tee -a /etc/security/limits.conf > /dev/null
+#echo 'max_filedescriptors 16384' | sudo tee -a /etc/security/limits.conf
+#echo "max_filedescriptors 32768" >> /etc/squid/local_bottom.conf
 systemctl start squid
