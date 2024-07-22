@@ -9,13 +9,13 @@ echo 'include /etc/squid/conf.d/*.conf' | sudo tee -a tee /etc/squid/squid.conf 
 echo 'http_access allow all' | sudo tee -a /etc/squid/squid.conf > /dev/null
 echo 'http_port 3128' | sudo tee -a /etc/squid/squid.conf > /dev/null
 echo 'coredump_dir /var/spool/squid' | sudo tee -a /etc/squid/squid.conf > /dev/null
-echo 'refresh_pattern ^ftp:           1440    20%     10080' | sudo tee -a /etc/squid/squid.conf > /dev/null
-echo 'refresh_pattern -i (/cgi-bin/|\?) 0     0%      0' | sudo tee -a /etc/squid/squid.conf > /dev/null
-echo 'refresh_pattern \/(Packages|Sources)(|\.bz2|\.gz|\.xz)$ 0 0% 0 refresh-ims' | sudo tee -a /etc/squid/squid.conf > /dev/null
-echo 'refresh_pattern \/Release(|\.gpg)$ 0 0% 0 refresh-ims' | sudo tee -a /etc/squid/squid.conf > /dev/null
-echo 'refresh_pattern \/InRelease$ 0 0% 0 refresh-ims' | sudo tee -a /etc/squid/squid.conf > /dev/null
-echo 'refresh_pattern \/(Translation-.*)(|\.bz2|\.gz|\.xz)$ 0 0% 0 refresh-ims' | sudo tee -a /etc/squid/squid.conf > /dev/null
-echo 'refresh_pattern .               0       20%     4320' | sudo tee -a /etc/squid/squid.conf > /dev/null
+#echo 'refresh_pattern ^ftp:           1440    20%     10080' | sudo tee -a /etc/squid/squid.conf > /dev/null
+#echo 'refresh_pattern -i (/cgi-bin/|\?) 0     0%      0' | sudo tee -a /etc/squid/squid.conf > /dev/null
+#echo 'refresh_pattern \/(Packages|Sources)(|\.bz2|\.gz|\.xz)$ 0 0% 0 refresh-ims' | sudo tee -a /etc/squid/squid.conf > /dev/null
+#echo 'refresh_pattern \/Release(|\.gpg)$ 0 0% 0 refresh-ims' | sudo tee -a /etc/squid/squid.conf > /dev/null
+#echo 'refresh_pattern \/InRelease$ 0 0% 0 refresh-ims' | sudo tee -a /etc/squid/squid.conf > /dev/null
+#echo 'refresh_pattern \/(Translation-.*)(|\.bz2|\.gz|\.xz)$ 0 0% 0 refresh-ims' | sudo tee -a /etc/squid/squid.conf > /dev/null
+#echo 'refresh_pattern .               0       20%     4320' | sudo tee -a /etc/squid/squid.conf > /dev/null
 echo 'acl allow_my_ip src 0.0.0.0/0' | sudo tee -a /etc/squid/squid.conf > /dev/null
 echo 'visible_hostname none' | sudo tee -a /etc/squid/squid.conf > /dev/null
 echo 'via off' | sudo tee -a /etc/squid/squid.conf > /dev/null
