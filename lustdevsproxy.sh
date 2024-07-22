@@ -8,7 +8,7 @@ systemctl enable squid
 echo 'include /etc/squid/conf.d/*.conf' | sudo tee -a tee /etc/squid/squid.conf > /dev/null
 echo 'http_access allow all' | sudo tee -a /etc/squid/squid.conf > /dev/null
 echo 'http_port 3128' | sudo tee -a /etc/squid/squid.conf > /dev/null
-echo 'coredump_dir /var/spool/squid' | sudo tee -a /etc/squid/squid.conf > /dev/null
+echo 'coredump_dir /dev/null' | sudo tee -a /etc/squid/squid.conf > /dev/null
 #echo 'refresh_pattern ^ftp:           1440    20%     10080' | sudo tee -a /etc/squid/squid.conf > /dev/null
 #echo 'refresh_pattern -i (/cgi-bin/|\?) 0     0%      0' | sudo tee -a /etc/squid/squid.conf > /dev/null
 #echo 'refresh_pattern \/(Packages|Sources)(|\.bz2|\.gz|\.xz)$ 0 0% 0 refresh-ims' | sudo tee -a /etc/squid/squid.conf > /dev/null
@@ -29,5 +29,6 @@ echo 'cache deny all' | sudo tee -a /etc/squid/squid.conf > /dev/null
 echo 'access_log none' | sudo tee -a /etc/squid/squid.conf > /dev/null
 echo 'cache_store_log none' | sudo tee -a /etc/squid/squid.conf > /dev/null
 echo 'cache_log /dev/null' | sudo tee -a /etc/squid/squid.conf > /dev/null
+echo 'cache_dir none /dev/null' | sudo tee -a /etc/squid/squid.conf > /dev/null
 echo '* - nofile 4096' | sudo tee -a /etc/security/limits.conf
 systemctl start squid
