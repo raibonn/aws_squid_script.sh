@@ -1,5 +1,5 @@
 #!/bin/bash
-
+echo "Started Setup"
 #excute as root
 #sudo su
 
