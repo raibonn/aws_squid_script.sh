@@ -1,22 +1,22 @@
 #!/bin/bash
-echo "Started Setup"
+
 #excute as root
 #sudo su
 
 #Refresh System
-apt update -y
-apt upgrade -y
+sudo apt update -y
+sudo apt upgrade -y
 
 ###HTTP###
 #install HTTP Proxy
-apt install squid openssl -y
+sudo apt install squid openssl -y
 
 #Make symlink
-systemctl enable squid
+sudo systemctl enable squid
 
 #Clear Config
 #/etc/squid/squid.conf
-:>| /etc/squid/squid.conf
+sudo :>| /etc/squid/squid.conf
 
 #Write Config
 echo 'include /etc/squid/conf.d/*.conf' | sudo tee -a tee /etc/squid/squid.conf > /dev/null
@@ -55,18 +55,18 @@ echo 'max_filedescriptors 8196' | sudo tee -a /etc/squid/squid.conf > /dev/null
 #echo "max_filedescriptors 32768" >> /etc/squid/local_bottom.conf
 
 #Start HTTP Proxy port:3128
-systemctl start squid
+sudo systemctl start squid
 
 #Edit limit
 #/etc/systemd/system/multi-user.target.wants/squid.service
 #sed -i '/NotifyAccess=all/i LimitNOFILE=8196' /etc/systemd/system/multi-user.target.wants/squid.service
-sed -i '/NotifyAccess=all/i LimitNOFILE=8196' /usr/lib/systemd/system/squid.service
+sudo sed -i '/NotifyAccess=all/i LimitNOFILE=8196' /usr/lib/systemd/system/squid.service
 sudo systemctl daemon-reload
-systemctl restart squid
+sudo systemctl restart squid
 
 ###Socks5###
 #install SOCKS5 Proxy
-apt install dante-server -y
+sudo apt install dante-server -y
 
 #Config Edit
 echo 'internal: 0.0.0.0 port = 1080' | sudo tee -a /etc/danted.conf > /dev/null
@@ -83,5 +83,5 @@ echo '  from: 0.0.0.0/0 to: 0.0.0.0/0' | sudo tee -a /etc/danted.conf > /dev/nul
 echo '}' | sudo tee -a /etc/danted.conf > /dev/null
 
 #Activate Proxy
-systemctl enable danted
-systemctl restart danted
+sudo systemctl enable danted
+sudo systemctl restart danted
