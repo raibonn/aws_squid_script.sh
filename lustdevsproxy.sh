@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #excute as root
-sudo su
+#sudo su
 
 #Refresh System
 apt update -y
