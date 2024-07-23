@@ -49,6 +49,7 @@ echo 'max_filedescriptors 8196' | sudo tee -a /etc/squid/squid.conf > /dev/null
 systemctl start squid
 
 #/etc/systemd/system/multi-user.target.wants/squid.service
-sed -i '/NotifyAccess=all/i LimitNOFILE=8196' /etc/systemd/system/multi-user.target.wants/squid.service
+#sed -i '/NotifyAccess=all/i LimitNOFILE=8196' /etc/systemd/system/multi-user.target.wants/squid.service
+sed -i '/NotifyAccess=all/i LimitNOFILE=8196' /usr/lib/systemd/system/squid.service
 sudo systemctl daemon-reload
 systemctl restart squid
