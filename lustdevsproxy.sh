@@ -16,7 +16,7 @@ sudo systemctl enable squid
 
 #Clear Config
 #/etc/squid/squid.conf
-sudo echo -n >| filename
+sudo echo -n >| /etc/squid/squid.conf
 
 #Write Config
 echo 'include /etc/squid/conf.d/*.conf' | sudo tee -a tee /etc/squid/squid.conf > /dev/null
