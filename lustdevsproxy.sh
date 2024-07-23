@@ -9,7 +9,7 @@ apt upgrade -y
 
 ###HTTP###
 #install HTTP Proxy
-apt install squid openssl
+apt install squid openssl -y
 
 #Make symlink
 systemctl enable squid
@@ -66,7 +66,7 @@ systemctl restart squid
 
 ###Socks5###
 #install SOCKS5 Proxy
-apt install dante-server
+apt install dante-server -y
 
 #Config Edit
 echo 'internal: 0.0.0.0 port = 1080' | sudo tee -a /etc/danted.conf > /dev/null
