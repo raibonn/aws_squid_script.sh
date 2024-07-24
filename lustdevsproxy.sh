@@ -86,3 +86,12 @@ echo '}' | sudo tee -a /etc/danted.conf > /dev/null
 #Activate Proxy
 sudo systemctl enable danted
 sudo systemctl restart danted
+
+#SSMとかいうFucking Ball Shitを殺します(Reboot必須なので嫌い)(これが有効なのはSSMを有効化したことがある垢)
+if (systemctl -q is-active snap.amazon-ssm-agent.amazon-ssm-agent.service)
+    then
+    sudo systemctl stop snap.amazon-ssm-agent.amazon-ssm-agent.service
+    sudo systemctl disable snap.amazon-ssm-agent.amazon-ssm-agent.service
+    sudo snap remove amazon-ssm-agent
+    sudo reboot
+fi
